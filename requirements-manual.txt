@@ -1,0 +1,6 @@
+wget
+matplotlib
+pandas
+numpy
+ipykernel
+Path

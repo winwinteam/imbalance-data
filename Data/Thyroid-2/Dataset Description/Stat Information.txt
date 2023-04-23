@@ -1,0 +1,160 @@
+describe
+tabulate class
+summarize factor1 factor2 factor3 factor4 factor5 factor6 factor7 factor8 factor9 factor10 factor11 factor12 factor13 factor14 factor15 factor16 factor17 factor18 factor19 factor20 factor21 class
+summarize class, detail
+ci factor1 factor2 factor3 factor4 factor5 factor6 factor7 factor8 factor9 factor10 factor11 factor12 factor13 factor14 factor15 factor16 factor17 factor18 factor19 factor20 factor21 class
+tabstat factor1 factor2 factor3 factor4 factor5 factor6 factor7 factor8 factor9 factor10 factor11 factor12 factor13 factor14 factor15 factor16 factor17 factor18 factor19 factor20 factor21 class, s(mean semean median sd var skew k count sum range min max )
+ 
+  Graphs:
+ . graph hbar (mean)  factor1 factor2 factor3 factor4 factor5 factor6 factor7 factor8 factor9 factor10 factor11 factor12 factor13 factor14 factor15 factor16 factor17 factor18 factor19 factor20 factor21 , over(class)
+ 
+ 
+ Contains data
+  obs:           215                          
+ vars:             6                          
+ size:         4,085                          
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+factor1         int    %8.0g                  
+factor2         float  %9.0g                  
+factor3         float  %9.0g                  
+factor4         float  %9.0g                  
+factor5         float  %9.0g                  
+class           byte   %8.0g                  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by:  
+     Note:  dataset has changed since last saved
+
+. tabulate class
+
+      class |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        180       83.72       83.72
+          1 |         35       16.28      100.00
+------------+-----------------------------------
+      Total |        215      100.00
+
+. summarize factor1 factor2 factor3 factor4 factor5  class
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+     factor1 |       215    109.5953    13.14545         65        144
+     factor2 |       215    9.804651    4.697362         .5       25.3
+     factor3 |       215    2.050233    1.419486         .2         10
+     factor4 |       215        2.88    6.118031         .1       56.4
+     factor5 |       215     4.19907    8.070518        -.7       56.3
+-------------+--------------------------------------------------------
+       class |       215    .1627907    .3700362          0          1
+
+. summarize class, detail
+
+                            class
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                 215
+25%            0              0       Sum of Wgt.         215
+
+50%            0                      Mean           .1627907
+                        Largest       Std. Dev.      .3700362
+75%            0              1
+90%            1              1       Variance       .1369268
+95%            1              1       Skewness       1.826828
+99%            1              1       Kurtosis       4.337302
+
+. ci factor1 factor2 factor3 factor4 factor5 class
+
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+     factor1 |        215    109.5953    .8965121        107.8282    111.3625
+     factor2 |        215    9.804651    .3203574        9.173191    10.43611
+     factor3 |        215    2.050233    .0968082        1.859413    2.241052
+     factor4 |        215        2.88    .4172462        2.057561    3.702439
+     factor5 |        215     4.19907    .5504048        3.114161    5.283979
+-------------+---------------------------------------------------------------
+       class |        215    .1627907    .0252363        .1130472    .2125342
+
+. tabstat factor1 factor2 factor3 factor4 factor5 class, s(mean semean median sd var skew k count sum range min max )
+
+   stats |   factor1   factor2   factor3   factor4   factor5     class
+---------+------------------------------------------------------------
+    mean |  109.5953  9.804651  2.050233      2.88   4.19907  .1627907
+se(mean) |  .8965121  .3203574  .0968082  .4172462  .5504048  .0252363
+     p50 |       110       9.2       1.7       1.3         2         0
+      sd |  13.14545  4.697362  1.419486  6.118031  8.070518  .3700362
+variance |  172.8028  22.06521  2.014942   37.4303  65.13327  .1369268
+skewness | -.5023979  1.024808  2.987388   5.45389   4.24365  1.826828
+kurtosis |  4.528494    4.5688  14.22475  38.97042  23.26173  4.337302
+       N |       215       215       215       215       215       215
+     sum |     23563      2108     440.8     619.2     902.8        35
+   range |        79      24.8       9.8      56.3        57         1
+     min |        65        .5        .2        .1       -.7         0
+     max |       144      25.3        10      56.4      56.3         1
+----------------------------------------------------------------------
+
+ 
+. pca v1 v2 v3 v4 v5
+
+Principal components/correlation                  Number of obs    =       215
+                                                  Number of comp.  =         5
+                                                  Trace            =         5
+    Rotation: (unrotated = principal)             Rho              =    1.0000
+
+    --------------------------------------------------------------------------
+       Component |   Eigenvalue   Difference         Proportion   Cumulative
+    -------------+------------------------------------------------------------
+           Comp1 |      2.68036      1.65323             0.5361       0.5361
+           Comp2 |      1.02713      .475964             0.2054       0.7415
+           Comp3 |      .551166     .0511389             0.1102       0.8517
+           Comp4 |      .500027      .258708             0.1000       0.9517
+           Comp5 |       .24132            .             0.0483       1.0000
+    --------------------------------------------------------------------------
+
+Principal components (eigenvectors) 
+
+    ------------------------------------------------------------------------------
+        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5 | Unexplained 
+    -------------+--------------------------------------------------+-------------
+              v1 |   0.4422   -0.2847    0.8235    0.1759   -0.1195 |           0 
+              v2 |  -0.5259    0.1799    0.4259    0.0995    0.7070 |           0 
+              v3 |  -0.4748    0.4764    0.3071    0.0719   -0.6695 |           0 
+              v4 |   0.3914    0.5672   -0.1434    0.6973    0.1351 |           0 
+              v5 |   0.3864    0.5813    0.1598   -0.6839    0.1395 |           0 
+    ------------------------------------------------------------------------------
+
+. screeplot
+
+. screeplot, yline(1) ci(het)
+
+. predict pc1 pc2, score
+(3 components skipped)
+
+Scoring coefficients 
+    sum of squares(column-loading) = 1
+
+    ----------------------------------------------------------------
+        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5 
+    -------------+--------------------------------------------------
+              v1 |   0.4422   -0.2847    0.8235    0.1759   -0.1195 
+              v2 |  -0.5259    0.1799    0.4259    0.0995    0.7070 
+              v3 |  -0.4748    0.4764    0.3071    0.0719   -0.6695 
+              v4 |   0.3914    0.5672   -0.1434    0.6973    0.1351 
+              v5 |   0.3864    0.5813    0.1598   -0.6839    0.1395 
+    ----------------------------------------------------------------
+
+. export excel using "C:\Users\bassam\Dropbox\Imbalanced Problem\Processed Datasets\thyroid-2\thyroid_2_numbers_pc1_pc2.xls"
+file C:\Users\bassam\Dropbox\Imbalanced Problem\Processed Datasets\thyroid-2\thyroid_2_numbers_pc1_pc2.xls saved
+
+. fapara, pca reps(10)
+
+PA -- Parallel Analysis for Principal Components -- N = 215
+PA Eigenvalues Averaged Over 10 Replications
+         PCA        PA          Dif
+  1.   2.680357   1.192141    1.488216  
+  2.    1.02713   1.092767    -.065637  
+  3.   .5511662   1.003508   -.4523423  
+  4.   .5000273     .91219   -.4121627  
+  5.   .2413196   .7993933   -.5580737  
